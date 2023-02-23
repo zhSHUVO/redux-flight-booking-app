@@ -8,7 +8,6 @@ export const BookingTable = () => {
         dispatch(removeBooking(booking));
     };
     const bookings = useSelector((state) => state);
-    console.log(bookings);
 
     return (
         <div className="table-container">

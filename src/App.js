@@ -1,14 +1,17 @@
 import { useState } from "react";
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { v4 as uuid } from "uuid";
 import "./App.css";
 import { BookingTable } from "./components/BookingTable";
 import { Header } from "./components/Header";
-
 import { addBooking } from "./redux/booking/actions";
 
 function App() {
     const dispatch = useDispatch();
+
+    const totalBookings = useSelector((state) => state);
+    const buttonEnabled = totalBookings.length === 3 ? false : true;
+
     const [bookingData, setBookingData] = useState();
     const submittedBookingData = (e) => {
         setBookingData({
@@ -16,11 +19,11 @@ function App() {
             [e.target.name]: e.target.value,
         });
     };
+
     const submit = (e) => {
         e.preventDefault();
         const uniqeId = { id: uuid() };
         const savedBookingData = Object.assign(uniqeId, bookingData);
-        console.log(savedBookingData);
         dispatch(addBooking(savedBookingData));
     };
 
@@ -139,6 +142,7 @@ function App() {
                             </div>
 
                             <button
+                                disabled={!buttonEnabled}
                                 className="addCity"
                                 type="submit"
                                 id="lws-addCity"
