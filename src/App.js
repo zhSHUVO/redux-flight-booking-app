@@ -25,6 +25,11 @@ function App() {
         const uniqeId = { id: uuid() };
         const savedBookingData = Object.assign(uniqeId, bookingData);
         dispatch(addBooking(savedBookingData));
+        document.getElementById("lws-from").value = "";
+        document.getElementById("lws-to").value = "";
+        document.getElementById("lws-date").value = "";
+        document.getElementById("lws-guests").value = "";
+        document.getElementById("lws-ticketClass").value = "";
     };
 
     return (
@@ -142,10 +147,10 @@ function App() {
                             </div>
 
                             <button
-                                disabled={!buttonEnabled}
                                 className="addCity"
                                 type="submit"
                                 id="lws-addCity"
+                                disabled={!buttonEnabled}
                             >
                                 <svg
                                     width="15px"
