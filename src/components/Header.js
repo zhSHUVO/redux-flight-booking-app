@@ -2,6 +2,7 @@ import React from "react";
 import lws_logo from "../images/lws-logo.svg";
 
 export const Header = () => {
+    let url = "";
     return (
         <div>
             <header id="header">
@@ -10,7 +11,7 @@ export const Header = () => {
                     <div className="flex items-center">
                         <a
                             className="text-white min-w-[50px] font-medium"
-                            href="#"
+                            href={url}
                         >
                             Home
                         </a>

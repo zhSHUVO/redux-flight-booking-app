@@ -1,7 +1,12 @@
 import React from "react";
-import { useSelector } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
+import { removeBooking } from "../redux/booking/actions";
 
 export const BookingTable = () => {
+    const dispatch = useDispatch();
+    const deleteClick = (booking) => {
+        dispatch(removeBooking(booking));
+    };
     const bookings = useSelector((state) => state);
     console.log(bookings);
 
@@ -52,7 +57,10 @@ export const BookingTable = () => {
                             </td>
                             <td className="px-6 py-4 text-center">
                                 <div className="flex justify-center gap-4">
-                                    <button className="lws-remove">
+                                    <button
+                                        className="lws-remove"
+                                        onClick={() => deleteClick(booking.id)}
+                                    >
                                         <svg
                                             xmlns="http://www.w3.org/2000/svg"
                                             fill="none"

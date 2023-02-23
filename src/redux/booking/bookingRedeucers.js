@@ -9,8 +9,9 @@ const bookingReducer = (state = [], action) => {
         }
         case REMOVE_BOOKING: {
             const bookingState = state.slice();
+            console.log(bookingState);
             return bookingState.filter(
-                (booking) => booking.id !== action.payload.value.id
+                (booking) => booking.id !== action.payload.value
             );
         }
 
